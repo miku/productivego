@@ -21,6 +21,15 @@ replacement for a Java command line tool.
 
 ----
 
+# Random
+
+In my spare time, I sometimes join hackathons (join me); last time I created
+slot machine animations with a numpy:
+
+![](static/dvm-011431.webm)
+
+----
+
 # Overview
 
 * all languages have (significant) tradeoffs
