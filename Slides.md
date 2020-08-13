@@ -13,6 +13,8 @@ Three reasons why Go feels (and is) productive.
 * open source contributor and author
 * co-host of [Leipzig Golang User Group](https://golangleipzig.space/)
 
+![](static/moon_phase.gif)
+
 I started to use Go in 2013, that must have been [Go 1.1
 release](https://golang.org/doc/devel/release.html). The first program was a
 replacement for a Java command line tool.
