@@ -99,6 +99,26 @@ Let's look at one example.
 
 ----
 
+# Fast enough Reservoir Sampling
+
+Reservoir sampling is a powerful technique to get a sample of a fixed size from
+a potentially infinite stream.
+
+* Not POSIX, but included in GNU core utils is `shuf`, which uses reservior sampling (since 2013)
+
+> Hi,
+> I would like to know why shuf.c is using reservoir sampling +
+> write_permuted_output_reservoir rather than just using an inside-out version
+> Fisher-Yates shuffle.
+
+A Go version: [rsampling](https://github.com/miku/rsampling)
+
+The wikipedia page on `shuf` mentions `sort -R`, let's see:
+
+![](https://raw.githubusercontent.com/miku/rsampling/master/images/bm1.png)
+
+----
+
 
 * go is fast
 * fast compilation
