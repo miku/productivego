@@ -11,7 +11,7 @@ Three reasons why Go feels (and is) productive.
 * software developer at [Leipzig University Library](https://ub.uni-leipzig.de) (BDJ2017) and data engineer at the
   [Internet Archive](https://archive.org) - check out [Archive Scholar](https://scholar.archive.org)
 * open source [contributor](https://github.com/miku), [computer scientist](https://dblp.org/search?q=martin+czygan) and [author](https://g.co/kgs/Dka5z8)
-* co-host of [Leipzig Golang User Group](https://golangleipzig.space/)
+* co-host of [Leipzig Golang User Group](https://golangleipzig.space/), [meetup.com/Leipzig-Golang](https://www.meetup.com/Leipzig-Golang/)
 
 ![](static/moon_phase.gif)
 
