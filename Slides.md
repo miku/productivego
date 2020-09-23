@@ -117,7 +117,7 @@ to Go is still a TODO).
 > Hi,
 > I would like to know why shuf.c is using reservoir sampling +
 > write_permuted_output_reservoir rather than just using an inside-out version
-> Fisher-Yates shuffle.
+> Fisher-Yates shuffle. -- [https://lists.gnu.org/archive/html/coreutils/2013-12/msg00165.html](https://lists.gnu.org/archive/html/coreutils/2013-12/msg00165.html)
 
 A Go version: [rsampling](https://github.com/miku/rsampling)
 
