@@ -113,7 +113,9 @@ a potentially infinite stream.
 
 A Go version: [rsampling](https://github.com/miku/rsampling)
 
-The wikipedia page on `shuf` mentions `sort -R`, let's see:
+The wikipedia page on `shuf`
+[mentions](https://en.wikipedia.org/wiki/Shuf#See_also) `sort -R`, so let's
+see:
 
 ![](https://raw.githubusercontent.com/miku/rsampling/master/images/bm1.png)
 
