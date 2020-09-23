@@ -38,7 +38,7 @@ me](mailto:martin.czygan@gmail.com)); last time I
 * in this talk I want to highlight positive aspects of the language; there are
   many more
 * Go is not great because of a single killer feature; in fact none of the
-  highlights is that extraordinary, but the sum adds up
+  highlights is that extraordinary, but the it adds up
 * I believe, Go will become more popular (slowly) because it does less (and less can be more)
 
 ----
@@ -51,9 +51,35 @@ me](mailto:martin.czygan@gmail.com)); last time I
 
 ----
 
-# Performance
+# Reason 1: Performance
 
-TODO:
+Go is fast.
+
+----
+
+# Fast compilation
+
+It starts with dependency management.
+
+> In 1984, a compilation of ps.c, the source to the Unix ps command, was
+> observed to #include <sys/stat.h> 37 times by the time all the preprocessing
+> had been done. Even though the contents are discarded 36 times while doing
+> so, most C implementations would open the file, read it, and scan it all 37
+> times. -- [https://talks.golang.org/2012/splash.article#TOC_5.](https://talks.golang.org/2012/splash.article#TOC_5.)
+
+So, compile time reduction starts with less I/O.
+
+----
+
+# Go blurs the line
+
+* Go first appeared on November 10, 2009 (remember [Google Tech Talks](https://www.youtube.com/watch?v=rKnDgT73v8s)?)
+
+A few years before, there seemingly was a cold war going, since Erik Meijer et
+al. published [Static Typing Where Possible, Dynamic Typing When Needed:The End
+of the Cold War Between Programming
+Languages](https://www.ics.uci.edu/~lopes/teaching/inf212W12/readings/rdl04meijer.pdf).
+
 
 * go is fast
 * fast compilation
@@ -65,7 +91,7 @@ TODO:
 
 ----
 
-# Ergonomics
+# Reason 2: Ergonomics
 
 * emphasis on reading code
 * gofmt
@@ -77,7 +103,7 @@ TODO:
 
 ----
 
-# Deployment
+# Reason 3: Deployment
 
 * single binary
 * what is in that binary; show off
