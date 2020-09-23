@@ -80,6 +80,14 @@ al. published [Static Typing Where Possible, Dynamic Typing When Needed:The End
 of the Cold War Between Programming
 Languages](https://www.ics.uci.edu/~lopes/teaching/inf212W12/readings/rdl04meijer.pdf).
 
+The paper goes into a "softer type system" direction, but Go also wanted to end
+this war. It wanted to be a safe language (static) that was fun to write (dynamic).
+
+On part of that is: Can I run this instantly? And in Go, you can, with `go run
+prog.go` it sure feels fast.
+
+----
+
 
 * go is fast
 * fast compilation
