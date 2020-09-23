@@ -23,8 +23,10 @@ replacement for a Java command line tool.
 
 # Random
 
-In my spare time, I sometimes join hackathons (join me); last time I created
-slot machine animations with a numpy:
+In my spare time, I sometimes take part in hackathons ([join
+me](mailto:martin.czygan@gmail.com)); last time I
+[created](https://github.com/miku/dvmweb) slot machine animations with a
+[numpy](https://numpy.org/):
 
 ![](static/dvm-011431.gif)
 
