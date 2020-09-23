@@ -35,7 +35,7 @@ me](mailto:martin.czygan@gmail.com)); last time I
 # Overview
 
 * all languages have (significant) tradeoffs
-* in this talk I want to highlight positive aspects of the language; there are
+* in this talk I want to highlight a few positive aspects of the language; there are
   many more
 * Go is not great because of a single killer feature; in fact none of the
   highlights is that extraordinary, but the it adds up
@@ -85,6 +85,17 @@ this war. It wanted to be a safe language (static) that was fun to write (dynami
 
 On part of that is: Can I run this instantly? And in Go, you can, with `go run
 prog.go` it sure feels fast.
+
+----
+
+# Go is fast enough
+
+* that is one that I particularly like
+* there is an optimum for a given problem, between how fast it is, and how quickly you can implement it
+
+![](static/exp.png)
+
+Let's look at one example.
 
 ----
 
