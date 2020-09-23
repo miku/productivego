@@ -129,6 +129,21 @@ see:
 
 ----
 
+# Fast enough is enough
+
+Let's zoom in:
+
+![](https://raw.githubusercontent.com/miku/rsampling/master/images/bm2.png)
+
+The Go project is 89 lines of code (of which 12 are imports - standard library
+only - which my [editor](https://github.com/fatih/vim-go) completes for me. So,
+77 lines I needed to write. Also 6 lines for a "version" flag. So: 71. It
+reacts to a SIGINT, which is a nice-to-have and 12 more lines. Essentially 59
+lines of code.
+
+I wrote this *in an afternoon*.
+
+
 
 * go is fast
 * fast compilation
