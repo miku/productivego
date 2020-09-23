@@ -107,7 +107,11 @@ Let's look at one example.
 [Reservoir sampling](http://www.cs.umd.edu/~samir/498/vitter.pdf) is a powerful
 technique to get a sample of a fixed size from a potentially infinite stream.
 
-* Not POSIX, but included in GNU core utils is `shuf`, which uses reservior sampling (since 2013)
+* Not POSIX, but included in GNU core utils is `shuf`, which uses reservior
+  sampling (since 2013) - I use shuf all the time (and also need a variant to
+shuffle large files, and found
+[terashuf](https://github.com/alexandres/terashuf) - porting that C++ program
+to Go is still a TODO).
 
 > Hi,
 > I would like to know why shuf.c is using reservoir sampling +
