@@ -104,8 +104,8 @@ Let's look at one example.
 
 # Fast enough Reservoir Sampling
 
-Reservoir sampling is a powerful technique to get a sample of a fixed size from
-a potentially infinite stream.
+[Reservoir sampling](http://www.cs.umd.edu/~samir/498/vitter.pdf) is a powerful
+technique to get a sample of a fixed size from a potentially infinite stream.
 
 * Not POSIX, but included in GNU core utils is `shuf`, which uses reservior sampling (since 2013)
 
