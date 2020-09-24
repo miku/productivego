@@ -135,7 +135,7 @@ Let's zoom in.
 
 ![](static/bm2-rsampling.png)
 
-The Go project is 91 lines of code (of which 12 are imports - standard library
+The Go project is 91 lines of code of which 12 are imports - standard library
 only - which my [editor](https://github.com/fatih/vim-go) completes for me.
 Also 6 lines for a "version" flag. It responds to SIGINT, which is a
 nice-to-have and 12 more lines. Essentially around 60 lines of code.
@@ -162,7 +162,30 @@ hard to see, but the Scanner is lighter on "malloc".
 
 ![](static/bm2-rsampling-scanner.png)
 
-Sample size of [one](https://stats.stackexchange.com/questions/157582/what-can-we-say-about-population-mean-from-a-sample-size-of-1).
+Sample size of
+[one](https://stats.stackexchange.com/questions/157582/what-can-we-say-about-population-mean-from-a-sample-size-of-1).
+
+----
+
+# Do more with more (cores)
+
+Interestingly, Go has concurrency support built into the language. The keyword
+is `go` which starts a goroutine. A goroutine is a lightweight thread, managed
+by the Go runtime.
+
+The main idea is concurrency, to allow for more suitable decomposition of a
+program into components.
+
+Think of a web server: You may want accept a connection, then delegate the work
+onto a separate thread. You could use a thread pool - but what should be its
+size? You handle the request asynchronously, but that may needs async ops all
+the way down?
+
+CSP offers another option, have sequential parts that communicate with each
+other (to synchronize or to exchange values).
+
+
+
 
 ----
 
