@@ -125,7 +125,7 @@ The wikipedia page on `shuf`
 [mentions](https://en.wikipedia.org/wiki/Shuf#See_also) `sort -R`, so let's
 see:
 
-![](https://raw.githubusercontent.com/miku/rsampling/master/images/bm1.png)
+![](static/bm1-rsampling.png)
 
 ----
 
@@ -133,7 +133,7 @@ see:
 
 Let's zoom in.
 
-![](https://raw.githubusercontent.com/miku/rsampling/master/images/bm2-rsampling.png)
+![](static/bm2-rsampling.png)
 
 The Go project is 91 lines of code (of which 12 are imports - standard library
 only - which my [editor](https://github.com/fatih/vim-go) completes for me.
@@ -154,13 +154,13 @@ The following is an output of the builtin [go
 profiler](https://blog.golang.org/pprof), left Reader, right Scanner. It is
 hard to see, but the Scanner is lighter on "malloc".
 
-![](https://raw.githubusercontent.com/miku/rsampling/master/images/synopsis.png)
+![](static/synopsis.png)
 
 ----
 
 # Scanner is a bit faster
 
-![](https://raw.githubusercontent.com/miku/rsampling/master/images/bm2-rsampling-scanner.png)
+![](static/bm2-rsampling-scanner.png)
 
 Sample size of [one](https://stats.stackexchange.com/questions/157582/what-can-we-say-about-population-mean-from-a-sample-size-of-1).
 
