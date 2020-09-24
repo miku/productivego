@@ -6,4 +6,4 @@ Presentation for [Developer Group Leipzig](https://www.meetup.com/Developer-Grou
 
 * Date: TBD
 * Location: Web
-* Slides: [markdown](Slides.md), [PDF](Slides.pdf)
+* [Slides](Slides.md), [PDF](Slides.pdf)
