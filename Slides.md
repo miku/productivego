@@ -131,15 +131,14 @@ see:
 
 # Fast enough is enough
 
-Let's zoom in:
+Let's zoom in.
 
 ![](https://raw.githubusercontent.com/miku/rsampling/master/images/bm2-rsampling.png)
 
-The Go project is 89 lines of code (of which 12 are imports - standard library
-only - which my [editor](https://github.com/fatih/vim-go) completes for me. So,
-77 lines I needed to write. Also 6 lines for a "version" flag. So: 71. It
-reacts to a SIGINT, which is a nice-to-have and 12 more lines. Essentially 59
-lines of code.
+The Go project is 91 lines of code (of which 12 are imports - standard library
+only - which my [editor](https://github.com/fatih/vim-go) completes for me.
+Also 6 lines for a "version" flag. It responds to SIGINT, which is a
+nice-to-have and 12 more lines. Essentially around 60 lines of code.
 
 It did not took long to write the Go version, and the initial, unoptimized
 version was *fast enough*.
@@ -156,6 +155,12 @@ profiler](https://blog.golang.org/pprof), left Reader, right Scanner. It is
 hard to see, but the Scanner is lighter on "malloc".
 
 ![](https://raw.githubusercontent.com/miku/rsampling/master/images/synopsis.png)
+
+----
+
+# Scanner is a bit faster
+
+![](https://raw.githubusercontent.com/miku/rsampling/master/images/bm2-rsampling-scanner.png)
 
 ----
 
