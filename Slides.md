@@ -162,6 +162,8 @@ hard to see, but the Scanner is lighter on "malloc".
 
 ![](https://raw.githubusercontent.com/miku/rsampling/master/images/bm2-rsampling-scanner.png)
 
+Sample size of [one](https://stats.stackexchange.com/questions/157582/what-can-we-say-about-population-mean-from-a-sample-size-of-1).
+
 ----
 
 
