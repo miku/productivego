@@ -151,7 +151,9 @@ version was *fast enough*.
 Go has been described as both high and low level language. One optimization for
 rsampling relates to memory allocation.
 
-The following is an output of the builtin [go profiler](https://blog.golang.org/pprof).
+The following is an output of the builtin [go
+profiler](https://blog.golang.org/pprof), left Reader, right Scanner. It is
+hard to see, but the Scanner is lighter on "malloc".
 
 ![](https://raw.githubusercontent.com/miku/rsampling/master/images/synopsis.png)
 
