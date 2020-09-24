@@ -133,7 +133,7 @@ see:
 
 Let's zoom in:
 
-![](https://raw.githubusercontent.com/miku/rsampling/master/images/bm2.png)
+![](https://raw.githubusercontent.com/miku/rsampling/master/images/bm2-rsampling.png)
 
 The Go project is 89 lines of code (of which 12 are imports - standard library
 only - which my [editor](https://github.com/fatih/vim-go) completes for me. So,
@@ -141,8 +141,21 @@ only - which my [editor](https://github.com/fatih/vim-go) completes for me. So,
 reacts to a SIGINT, which is a nice-to-have and 12 more lines. Essentially 59
 lines of code.
 
-I wrote this *in an afternoon*.
+It did not took long to write the Go version, and the initial, unoptimized
+version was *fast enough*.
 
+----
+
+# A bit of optimization
+
+Go has been described as both high and low level language. One optimization for
+rsampling relates to memory allocation.
+
+The following is an output of the builtin [go profiler](https://blog.golang.org/pprof).
+
+![](https://raw.githubusercontent.com/miku/rsampling/master/images/synopsis.png)
+
+----
 
 
 * go is fast
