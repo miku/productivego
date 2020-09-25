@@ -94,7 +94,6 @@ prog.go` it sure feels fast.
 
 # Go is fast enough
 
-* that is one that I particularly like
 * there is a (assumed) optimum for a given problem, between how fast it is, and how quickly you can implement it
 
 A tradeoff between time spent and runtime, e.g. as you **increase** the time spent
