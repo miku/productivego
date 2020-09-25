@@ -94,6 +94,7 @@ prog.go` it sure feels fast.
 
 # Go is fast enough
 
+* Go is not the fastest language, but fast enough
 * there is a (assumed) optimum for a given problem, between how fast it is, and how quickly you can implement it
 
 A tradeoff between time spent and runtime, e.g. as you **increase** the time spent
@@ -120,7 +121,7 @@ to Go is still a TODO).
 > Hi,
 > I would like to know why shuf.c is using reservoir sampling +
 > write_permuted_output_reservoir rather than just using an inside-out version
-> Fisher-Yates shuffle. -- [https://lists.gnu.org/archive/html/coreutils/2013-12/msg00165.html](https://lists.gnu.org/archive/html/coreutils/2013-12/msg00165.html)
+> Fisher-Yates shuffle. -- [https://lists.gnu.org/archive/html/coreutils/2013-12/msg00165.html](https://lists.gnu.org/archive/html/coreutils/2013-12/msg00165.html) | *Reservoir sampling is used to limit memory usage*
 
 A Go version: [rsampling](https://github.com/miku/rsampling)
 
@@ -165,33 +166,58 @@ hard to see, but the Scanner is lighter on "malloc".
 
 ![](static/bm2-rsampling-scanner.png)
 
-Sample size of
-[one](https://stats.stackexchange.com/questions/157582/what-can-we-say-about-population-mean-from-a-sample-size-of-1).
+That is not too bad for a garbage collected, memory-safe language (even if the sample size is
+[one](https://stats.stackexchange.com/questions/157582/what-can-we-say-about-population-mean-from-a-sample-size-of-1)).
 
 ----
 
-# Do more with more (cores)
+# More is more
 
 Interestingly, Go has concurrency support built into the language. The keyword
-is `go` which starts a goroutine. A goroutine is a lightweight thread, managed
-by the Go runtime.
+is `go` which starts a goroutine.
 
-The main idea is concurrency, to allow for more suitable decomposition of a
-program into components.
+----
+
+# Concurrency
+
+* a way to decompose a program first
+* improve performance on multicore machines
+
+----
+
+# Design Questions
 
 Think of a web server: You may want accept a connection, then delegate the work
 onto a separate thread. You could use a thread pool - but what should be its
 size? You handle the request asynchronously, but that may needs async ops all
 the way down?
 
-CSP offers another option, have sequential parts that communicate with each
-other (to synchronize or to exchange values).
+----
 
+# Raw Primitives
 
+* Go CSP concurrency primitives can feel raw
 
+However, concurrency can easily be wrapped into a synchronous model.
+
+Example (parallel command line filter, error handling omitted):
+
+```go
+parallel.NewProcessor(os.Stdin, os.Stdout, func(p []byte) ([]byte, error) {
+    var data Data
+    json.Unmarshal(p, &data)
+    ...
+}).Run()
+```
+
+No thread, goroutine, channel or select, yet it will use all cores and will use
+batching to keep balance communication overhead.
 
 ----
 
+# SIMD
+
+----
 
 * go is fast
 * fast compilation
