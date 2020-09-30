@@ -1,8 +1,15 @@
 # Productive Go
 
-Three reasons why Go is a productive language. A personal review.
+Three reasons why Go feels like a productive language. A personal review.
 
 > Martin Czygan, <martin.czygan@gmail.com>, 2020-XX-XX, Developer Group Leipzig (online)
+
+----
+
+# About You
+
+* most informative, if you have little (or no) Go exposure
+* if you have done a lot of Go, then maybe not too many surprises
 
 ----
 
@@ -72,6 +79,8 @@ It starts with dependency management.
 > times. -- [https://talks.golang.org/2012/splash.article#TOC_5.](https://talks.golang.org/2012/splash.article#TOC_5.)
 
 So, compile time reduction starts with less I/O.
+
+Example: A 67529 LOC project, seaweedfs: with empty go build cache: 67s, subsequent builds: 8s.
 
 ----
 
@@ -171,7 +180,9 @@ That is not too bad for a garbage collected, memory-safe language (even if the s
 
 ----
 
-# More is more
+# The free lunch is over
+
+* [Free Lunch Is Over](https://www.cs.utexas.edu/~lin/cs380p/Free_Lunch.pdf)
 
 Interestingly, Go has concurrency support built into the language. The keyword
 is `go` which starts a goroutine.
@@ -180,17 +191,9 @@ is `go` which starts a goroutine.
 
 # Concurrency
 
-* a way to decompose a program first
-* improve performance on multicore machines
-
-----
-
-# Design Questions
-
-Think of a web server: You may want accept a connection, then delegate the work
-onto a separate thread. You could use a thread pool - but what should be its
-size? You handle the request asynchronously, but that may needs async ops all
-the way down?
+* a way to decompose a program first (see also: [Concurrency is not parallelism](https://blog.golang.org/waza-talk))
+* a concurrent program may run in parallel, when possible
+* used in popular parts of the standard library, e.g. in `net/http`
 
 ----
 
@@ -198,9 +201,7 @@ the way down?
 
 * Go CSP concurrency primitives can feel raw
 
-However, concurrency can easily be wrapped into a synchronous model.
-
-Example (parallel command line filter, error handling omitted):
+However, concurrency can be wrapped into a synchronous model. Example (parallel command line filter, error handling omitted):
 
 ```go
 parallel.NewProcessor(os.Stdin, os.Stdout, func(p []byte) ([]byte, error) {
@@ -215,7 +216,9 @@ batching to keep balance communication overhead.
 
 ----
 
-# SIMD
+# Further performance options
+
+* SIMD
 
 ----
 
