@@ -4,7 +4,7 @@ Title:  Productive Go
 
 Subtitle: Three reasons why Go is fun to work with (even after seven years).
 
-Abtract: The Go programming language is a stable and efficient programming
+Abstract: The Go programming language is a stable and efficient programming
 language, that can even be fun to work with. This talk highlights three areas
 of productive Go: Performance, Ergonomics and Deployment. This talk does not
 introduce Go, but rather tells three little stories with code.
