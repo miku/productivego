@@ -2,7 +2,7 @@
 
 Three reasons why Go feels like a productive language. A personal review.
 
-> Martin Czygan, <martin.czygan@gmail.com>, 2020-XX-XX, Developer Group Leipzig (online)
+> Martin Czygan, <martin.czygan@gmail.com>, 2020-12-08, [Developer Group Leipzig (online)](https://www.meetup.com/Developer-Group-Leipzig/events/273876459/)
 
 ----
 
