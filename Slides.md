@@ -189,6 +189,15 @@ is `go` which starts a goroutine.
 
 ----
 
+# Web framework performance benchmark
+
+* 6/20 top frameworks written in Go (positions: 8, 9, 15, 16, 19, 20); behind
+  C, C++ and Rust, but before any PHP, Java, C#, JS or Python framework.
+
+[![](static/web-benchmark-top-20.png)](https://www.techempower.com/benchmarks/)
+
+----
+
 # Concurrency
 
 * a way to decompose a program first (see also: [Concurrency is not parallelism](https://blog.golang.org/waza-talk))
