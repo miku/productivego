@@ -195,7 +195,7 @@ That is not too bad for a garbage collected, memory-safe language (even if the s
 
 > In this article, I’ll describe the changing face of hardware, why it suddenly
 > does matter to software, and how specifically the concurrency
-> revolutionmatters to you and is going to change the way you will likely be
+> revolution matters to you and is going to change the way you will likely be
 > writing software in the future.
 
 Interestingly, Go has concurrency support built into the language. The keyword
