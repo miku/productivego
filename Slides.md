@@ -225,22 +225,6 @@ batching to keep balance communication overhead.
 
 ----
 
-# Further performance options
-
-* SIMD
-
-----
-
-* go is fast
-* fast compilation
-* fast enough
-* low level, high level
-* concurrent programming; raw patterns
-* implement JSON parser; SIMD
-* show off cubietruck ARM, CRUD App, 500 r/s
-
-----
-
 # Reason 2: Ergonomics
 
 > ISO 6385 "Ergonomic principles in the design of work systems"
@@ -392,7 +376,7 @@ FROM scratch
 # Copy our static executable.
 COPY --from=builder /app/fetch /app/fetch
 
-# https://stackoverflow.com/questions/52969195/docker-container-running-golang-http-client-getting-error-certificate-signed-by
+# https://stackoverflow.com/q/52969195/89391
 ADD ca-certificates.crt /etc/ssl/certs/
 
 # Run the hello binary.
