@@ -18,7 +18,7 @@ Three reasons why Go feels like a productive language. A personal review.
 * software developer at [Leipzig University Library](https://ub.uni-leipzig.de)
   (Library of the Year 2017) and data engineer at the [Internet
   Archive](https://archive.org) - check out [Archive
-  Scholar](https://scholar.archive.org), a search engine for scholarly documents
+  Scholar](https://scholar-qa.archive.org), a search engine for scholarly documents
 * open source [contributor](https://github.com/miku), [computer
   scientist](https://dblp.org/search?q=martin+czygan),
   [lecturer](https://lancasterleipzig.de) and [author](https://g.co/kgs/Dka5z8)
@@ -46,11 +46,11 @@ me](mailto:martin.czygan@gmail.com)); last time I
 # Overview
 
 * all languages have (significant) tradeoffs
-* in this talk I want to highlight a few positive aspects of the language; there are
+* in this talk I would like to highlight a few positive aspects of the language; there are
   many more
 * Go is not great because of a single killer feature; in fact none of the
-  highlights is that extraordinary, but the it adds up
-* I believe, Go will become more popular (slowly) because it does less (and less can be more)
+  highlights is *that* extraordinary, but little things add up
+* I believe, Go will become more popular (slowly) because it does less (and [less can be more](https://commandcenter.blogspot.com/2012/06/less-is-exponentially-more.html))
 
 ----
 
@@ -86,27 +86,27 @@ Example: A 67529 LOC project, seaweedfs: with empty go build cache: 67s, subsequ
 
 # Go blurs the line
 
-* Go first appeared on November 10, 2009 (remember [Google Tech Talks](https://www.youtube.com/watch?v=rKnDgT73v8s)?)
+* Go first appeared on November 10, 2009 -- remember [Google Tech Talks](https://www.youtube.com/watch?v=rKnDgT73v8s)?
 
-A few years before, there seemingly was a cold war going, since Erik Meijer et
-al. published [Static Typing Where Possible, Dynamic Typing When Needed:The End
+A few years before, there seemingly was a cold war going on, e.g. [Erik Meijer](https://en.wikipedia.org/wiki/Erik_Meijer_(computer_scientist)) et
+al. published [Static Typing Where Possible, Dynamic Typing When Needed: The End
 of the Cold War Between Programming
 Languages](https://www.ics.uci.edu/~lopes/teaching/inf212W12/readings/rdl04meijer.pdf).
 
 The paper goes into a "softer type system" direction, but Go also wanted to end
-this war. It wanted to be a safe language (static) that was fun to write (dynamic).
+this war. It wanted to be a *safe* language (static) that was *fun* to write (dynamic).
 
-On part of that is: Can I run this instantly? And in Go, you can, with `go run
-prog.go` it sure feels fast.
+One part of that is - can I run code instantly? And in Go, you can, with `go
+run prog.go` - which will usually be fast.
 
 ----
 
-# Go is fast enough
+# Go is *fast enough*
 
 * Go is not the fastest language, but fast enough
-* there is a (assumed) optimum for a given problem, between how fast it is, and how quickly you can implement it
+* there is a (assumed) optimum for a given problem, between how fast a solution is, and how quickly you can implement it
 
-A tradeoff between time spent and runtime, e.g. as you **increase** the time spent
+A tradeoff between time spent and running time - e.g. as you **increase** the time spent
 on programming, the running time **comes down**.
 
 ![](static/exp.png)
@@ -148,9 +148,9 @@ Let's zoom in.
 
 ![](static/bm2-rsampling.png)
 
-The Go project is 91 lines of code of which 12 are imports - standard library
+The Go project consists of 91 lines of code of which 12 are imports - standard library
 only - which my [editor](https://github.com/fatih/vim-go) completes for me.
-Also 6 lines for a "version" flag. It responds to SIGINT, which is a
+Also 6 lines for a "version" flag. It responds to [SIGINT](http://people.cs.pitt.edu/~alanjawi/cs449/code/shell/UnixSignals.htm), which is a
 nice-to-have and 12 more lines. Essentially around 60 lines of code.
 
 It did not took long to write the Go version, and the initial, unoptimized
@@ -165,7 +165,7 @@ rsampling relates to memory allocation.
 
 The following is an output of the builtin [go
 profiler](https://blog.golang.org/pprof), left Reader, right Scanner. It is
-hard to see, but the Scanner is lighter on "malloc".
+hard to see, but the Scanner is lighter on allocations.
 
 ![](static/synopsis.png)
 
@@ -180,15 +180,6 @@ That is not too bad for a garbage collected, memory-safe language (even if the s
 
 ----
 
-# The free lunch is over
-
-* [Free Lunch Is Over](https://www.cs.utexas.edu/~lin/cs380p/Free_Lunch.pdf)
-
-Interestingly, Go has concurrency support built into the language. The keyword
-is `go` which starts a goroutine.
-
-----
-
 # Web framework performance benchmark
 
 * 6/20 top frameworks written in Go (positions: 8, 9, 15, 16, 19, 20); behind
@@ -198,19 +189,33 @@ is `go` which starts a goroutine.
 
 ----
 
+# The free lunch is over
+
+* [Free Lunch Is Over](https://www.cs.utexas.edu/~lin/cs380p/Free_Lunch.pdf)
+
+> In this article, I’ll describe the changing face of hardware, why it suddenly
+> does matter to software, and how specifically the concurrency
+> revolutionmatters to you and is going to change the way you will likely be
+> writing software in the future.
+
+Interestingly, Go has concurrency support built into the language. The keyword
+is `go` which starts a goroutine.
+
+----
+
 # Concurrency
 
 * a way to decompose a program first (see also: [Concurrency is not parallelism](https://blog.golang.org/waza-talk))
-* a concurrent program may run in parallel, when possible
-* used in popular parts of the standard library, e.g. in `net/http`
+* a concurrent program *may* run in parallel, when possible
+* used in popular parts of the standard library, e.g. in [net/http](https://golang.org/pkg/net/http/)
 
 ----
 
 # Raw Primitives
 
-* Go CSP concurrency primitives can feel raw
+* Go [CSP](https://golang.org/doc/faq#csp) concurrency primitives can feel raw
 
-However, concurrency can be wrapped into a synchronous model. Example (parallel command line filter, error handling omitted):
+However, concurrency can be wrapped into a synchronous model. Example (parallel command line [filter](https://en.wikipedia.org/wiki/Filter_(software)), error handling omitted):
 
 ```go
 parallel.NewProcessor(os.Stdin, os.Stdout, func(p []byte) ([]byte, error) {
@@ -245,7 +250,7 @@ batching to keep balance communication overhead.
 * use standard library only (if applicable)
 
 In general, reduce the number of ways thing can be done - especially use a
-restrictive approach to add **new stuff** to the language.
+restrictive approach to language development - add **new stuff** to the language very conservatively.
 
 Prime example: Discussion about *generic data types* is going on for about a
 decade. The language itself is very stable, boring.
@@ -270,7 +275,9 @@ Note: I still use Makefiles in Go projects, because I like to just type "make".
 * the `net` and `net/http` packages make your life easier (up to the point, where you do not need any web framework for simple services)
 * templating support
 
-Anecdata: The dependency file for a proxy server I wrote this year (and that dependency is something nice-to-have):
+Anecdata: The dependency file for a [proxy
+server](https://github.com/miku/httpgetaway/blob/master/ProxyIntro.md) I wrote
+this year (and that dependency is something nice-to-have):
 
 ```
 module github.com/miku/fluxproxy
@@ -292,7 +299,7 @@ Extension points and composability:
 # Readability
 
 A very human factor, the desire for understanding - while at the same time
-having to deal with cognitive load.
+having to deal with cognitive load ([2002](https://files.eric.ed.gov/fulltext/ED477013.pdf), [2020](https://computethought.blog/2020/05/18/cognitive-load-and-coding/), ...).
 
 * the `go fmt` is probably technically trivial, but impactful
 * the premise: it is better for collaboration to use a single *style*
@@ -328,7 +335,7 @@ Other ecosystems are chasing the "small deployment artifact" target - (I
 [ranted](https://github.com/miku/packpy) a bit about it on stage).
 
 * single binary
-* the amd64 *hello world* is 2.5MB (2034794)
+* the go 1.15.2 amd64 *hello world* binary is 2.5MB (2034794)
 
 ![](x/hello/output.png)
 
@@ -343,7 +350,7 @@ If the binary size become a problem, you can apply various techniques:
 
 You can go further by embedding assets into your program (e.g. template for a web application, etc).
 
-Note: we had a talk on file embedding in [meetup #14](https://golangleipzig.space/posts/meetup-14-wrapup/)
+Note: we had a talk on file embedding in [Leipzig Gophers Meetup #14](https://golangleipzig.space/posts/meetup-14-wrapup/).
 
 # Cross-compilation
 
@@ -402,7 +409,7 @@ Programs can register custom *exported variables*, a relatively simple way to ex
 
 * from: [https://git.io/JLO5Y](https://github.com/miku/microblob/blob/35dbf3adb0e9ea4ac0e7f3ba2c1f4c7e09844542/handler.go#L14-L18)
 
-```
+```go
 var (
     okCounter        *expvar.Int
     errCounter       *expvar.Int
@@ -420,13 +427,13 @@ func init() {
 
 By using a blank import, we include handlers that expose debug information.
 
-```
+```go
 import _ "expvar"
 ```
 
 We get a JSON blob with system and custom information.
 
-```
+```json
 $ curl -s 172.18.113.99:8820/debug/vars | jq . | head -20
 {
   "cmdline": [
@@ -448,11 +455,12 @@ $ curl -s 172.18.113.99:8820/debug/vars | jq . | head -20
     "HeapIdle": 39460864,
     "HeapInuse": 26304512,
     "HeapReleased": 32956416,
+...
 ```
 
-The poor mans metrics tracking can be:o
+The poor man's metrics tracking can be:
 
-```
+```shell
 $ while true; do curl -s 172.18.113.99:8820/debug/vars | jq .lastResponseTime; sleep 1; done
 0.000478914
 0.00035445
@@ -479,3 +487,7 @@ The pprof package provides facilities for cpu and heap stats, for command line t
 And of course:
 
 * Gophers are nice, join us at [https://golangleipzig.space/](https://golangleipzig.space/)
+
+----
+
+# [Q19279214](https://www.wikidata.org/wiki/Q19279214)!
