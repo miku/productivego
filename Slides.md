@@ -273,7 +273,7 @@ decade. The language itself is very stable, boring.
 
 # A single tool
 
-* the `go` tool compiles, run, tests, checks, formats, ... your code
+* the `go` tool compiles, run, tests (including race conditions), checks, formats, ... your code
 * as opposed to the language, this tool has seen quite some changes, e.g.
   support for Go modules for dependency management
 
@@ -313,6 +313,7 @@ having to deal with cognitive load.
 * the `go fmt` is probably technically trivial, but impactful
 * the premise: it is better for collaboration to use a single *style*
 * sets the tone: Go is a language that is made to be *rearranged* by tools
+* in the best case, code gets *impersonal*
 
 ----
 
@@ -326,23 +327,34 @@ bits and pieces), but I know what to expect.
 
 ----
 
-# Readability
+# Reason 3: Deployment
 
-* emphasis on reading code
-* gofmt
-* can read code of key value stores, or more complex pieces of code
-* regular language, tools on code
-* high level, low level
-* stdlib ftw
-* writing complete crud apps with minimal dependencies
+How many years of effort would be saved, if 1M programmers would care one
+hour less on deployment issues per month?
+
+![](static/num_devs.png)
+
+> 115 years/month, or 1380 years/year
 
 ----
 
-# Reason 3: Deployment
+# Single binary
+
+Other ecosystems are chasing the "small deployment artifact target" - while Go
+started with it (I [ranted](https://github.com/miku/packpy) a bit about it on
+stage).
 
 * single binary
 * what is in that binary; show off
-* smaller linux images
-* cross-compilation
-* selective compilation
+
+# Cross-compilation
+
+# Small OCI imagess
+
+# Expvars
+
+> Package expvar provides a standardized interface to public variables, such as
+> operation counters in servers.
+
+# The pprof profiler
 
