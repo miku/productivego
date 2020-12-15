@@ -243,6 +243,91 @@ batching to keep balance communication overhead.
 
 # Reason 2: Ergonomics
 
+> ISO 6385 "Ergonomic principles in the design of work systems"
+
+> It describes an integrated approach to the design of work systems, where
+> ergonomists will cooperate with others involved in the design, with attention
+> to the **human**, the **social** and the **technical** requirements in a
+> balanced manner during the design process.
+
+----
+
+# Theme of reduction
+
+* fewer keywords in the language (Go: 25, C: 32, Python: 33, Java: 52)
+* singular implementation of data structures (slice, map, struct)
+* no classes
+* single option for formatting code
+* use standard library only (if applicable)
+
+In general, reduce the number of ways thing can be done - especially use a
+restrictive approach to add **new stuff** to the language.
+
+Prime example: Discussion about *generic data types* is going on for about a
+decade. The language itself is very stable, boring.
+
+> Note: The reduction theme does come with lot of discussion - and at times
+> difficult conversations, as Go is maintained mostly by Google.
+
+----
+
+# A single tool
+
+* the `go` tool compiles, run, tests, checks, formats, ... your code
+* as opposed to the language, this tool has seen quite some changes, e.g.
+  support for Go modules for dependency management
+
+Note: I still use Makefiles in Go projects, because I like to just type "make".
+
+----
+
+# Standard library is biased, but powerful
+
+* the `net` and `net/http` packages make your life easier (up to the point, where you do not need any web framework for simple services)
+* templating support
+
+Anecdata: The dependency file for a proxy server I wrote this year (and that dependency is something nice-to-have):
+
+```
+module github.com/miku/fluxproxy
+
+go 1.13
+
+require github.com/sethgrid/pester v1.1.0
+```
+
+Extension points and composability:
+
+* the `io` package, and `io.Reader` and `io.Writer`
+* the `net/http` allows to plug in functionality through configuring its layers
+  (timeout, proxies, redirect handing, tracing, ...)
+* many more [...]
+
+----
+
+# Readability
+
+A very human factor, the desire for understanding - while at the same time
+having to deal with cognitive load.
+
+* the `go fmt` is probably technically trivial, but impactful
+* the premise: it is better for collaboration to use a single *style*
+* sets the tone: Go is a language that is made to be *rearranged* by tools
+
+----
+
+# Readability and larger projects
+
+I find it still hard to read through larger projects (and understand all the
+bits and pieces), but I know what to expect.
+
+* because Go is a bit more readable (and less noisy), you can read more code
+* it is also easier to spot *unusual* code, since it stands out more
+
+----
+
+# Readability
+
 * emphasis on reading code
 * gofmt
 * can read code of key value stores, or more complex pieces of code
