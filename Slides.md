@@ -334,27 +334,164 @@ hour less on deployment issues per month?
 
 ![](static/num_devs.png)
 
-> 115 years/month, or 1380 years/year
+> 115 years/month, or **1380 years/year**
 
 ----
 
 # Single binary
 
-Other ecosystems are chasing the "small deployment artifact target" - while Go
-started with it (I [ranted](https://github.com/miku/packpy) a bit about it on
-stage).
+Other ecosystems are chasing the "small deployment artifact" target - (I
+[ranted](https://github.com/miku/packpy) a bit about it on stage).
 
 * single binary
-* what is in that binary; show off
+* the amd64 *hello world* is 2.5MB (2034794)
+
+![](x/hello/output.png)
+
+It includes the Go runtime. There might be optimization potential:
+[36313](https://github.com/golang/go/issues/36313)
+
+If the binary size become a problem, you can apply various techniques:
+
+* `go build -ldflags="-s -w" main.go` (strip debug info and symbol tables) - reduced `hello` to 1.3MB
+
+# Embedding assets
+
+You can go further by embedding assets into your program (e.g. template for a web application, etc).
+
+Note: we had a talk on file embedding in [meetup #14](https://golangleipzig.space/posts/meetup-14-wrapup/)
 
 # Cross-compilation
 
-# Small OCI imagess
+Go allows to cross compile code with the default toolchain.
+
+* interesting for ARM servers
+
+It boils down to:
+
+```
+$ env GOOS=linux GOARCH=arm64 go build ...
+```
+
+# Small OCI images
+
+Compiled Go programs are almost good-to-go Linux images
+([example](https://github.com/miku/aboutgo/blob/master/topics/misc/fromscratch/Dockerfile)):
+
+* builder pattern
+
+Assuming container in step 1 contains everything we need to compile the code
+(here a program named "fetch"), in step two we are reduced to:
+
+```dockerfile
+############################
+# STEP 2 build a small image
+############################
+FROM scratch
+
+# Copy our static executable.
+COPY --from=builder /app/fetch /app/fetch
+
+# https://stackoverflow.com/questions/52969195/docker-container-running-golang-http-client-getting-error-certificate-signed-by
+ADD ca-certificates.crt /etc/ssl/certs/
+
+# Run the hello binary.
+ENTRYPOINT ["/app/fetch"]
+```
+
+We end up with:
+
+```
+$ docker images gosp/fetch
+REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
+gosp/fetch   latest    798273f33023   21 seconds ago   4.94MB
+```
 
 # Expvars
 
 > Package expvar provides a standardized interface to public variables, such as
 > operation counters in servers.
 
+Programs can register custom *exported variables*, a relatively simple way to expose internal metrics.
+
+## Example: performance and error counter
+
+* from: [https://git.io/JLO5Y](https://github.com/miku/microblob/blob/35dbf3adb0e9ea4ac0e7f3ba2c1f4c7e09844542/handler.go#L14-L18)
+
+```
+var (
+    okCounter        *expvar.Int
+    errCounter       *expvar.Int
+    lastResponseTime *expvar.Float
+)
+
+...
+
+func init() {
+    okCounter = expvar.NewInt("okCounter")
+    errCounter = expvar.NewInt("errCounter")
+    lastResponseTime = expvar.NewFloat("lastResponseTime")
+}
+```
+
+By using a blank import, we include handlers that expose debug information.
+
+```
+import _ "expvar"
+```
+
+We get a JSON blob with system and custom information.
+
+```
+$ curl -s 172.18.113.99:8820/debug/vars | jq . | head -20
+{
+  "cmdline": [
+    "/usr/local/bin/microblob",
+    "-c",
+    "/etc/microblob/microblob.ini"
+  ],
+  "errCounter": 8,
+  "lastResponseTime": 0.00026361,
+  "memstats": {
+    "Alloc": 23630216,
+    "TotalAlloc": 14377908139208,
+    "Sys": 76104704,
+    "Lookups": 0,
+    "Mallocs": 29911720481,
+    "Frees": 29911690806,
+    "HeapAlloc": 23630216,
+    "HeapSys": 65765376,
+    "HeapIdle": 39460864,
+    "HeapInuse": 26304512,
+    "HeapReleased": 32956416,
+```
+
+The poor mans metrics tracking can be:o
+
+```
+$ while true; do curl -s 172.18.113.99:8820/debug/vars | jq .lastResponseTime; sleep 1; done
+0.000478914
+0.00035445
+0.000101177
+0.0001924
+0.000177317
+0.000185274
+```
+
 # The pprof profiler
 
+The pprof package provides facilities for cpu and heap stats, for command line tools or servers.
+
+![](static/span-tagger.png)
+
+----
+
+# Wrap Up
+
+* a bunch of niceties, no killer feature
+* probably not using Go for data science
+* Go is perfect for tools and servers
+
+And of course:
+
+* Gophers are nice, join us at [https://golangleipzig.space/](https://golangleipzig.space/)
