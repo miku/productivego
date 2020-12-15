@@ -22,4 +22,4 @@ Talk at [Developer Group Leipzig](https://www.meetup.com/Developer-Group-Leipzig
 
 ----
 
-![](https://blog.golang.org/10years/gopher10th-large.jpg)
+[![](https://blog.golang.org/10years/gopher10th-large.jpg)](https://blog.golang.org/10years)
