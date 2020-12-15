@@ -1,4 +1,4 @@
-# WIP: Talk
+# Talk
 
 Title:  Productive Go - Three reasons why Go is fun to work with (even after seven years).
 
@@ -17,4 +17,4 @@ Presentation for [Developer Group Leipzig](https://www.meetup.com/Developer-Grou
 
 * Date: [2020-12-08](https://www.meetup.com/Developer-Group-Leipzig/events/273876459/), 18:30 CET
 * Location: [Web](https://www.meetup.com/Developer-Group-Leipzig/events/273876459/)
-* [Slides](Slides.md), [PDF](Slides.pdf)
+* [Slides](Slides.md)
