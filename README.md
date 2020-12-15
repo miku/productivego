@@ -9,8 +9,7 @@ language that can even be fun to work with. After using the language for a
 couple of years, I want to take a step back and highlight three areas where Go
 strikes me as a productive language: Performance, Ergonomics and Deployment.
 
-This talk does not introduce Go, but rather tells three short stories with code
-- and tries to find out what a language that has been criticized as being
+This talk does not introduce Go, but rather tells three short stories with code - and tries to find out what a language that has been criticized as being
 "stuck in the 70s" can teach us about software development today.
 
 ----
