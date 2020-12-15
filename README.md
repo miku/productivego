@@ -1,6 +1,6 @@
-# Talk
+# Talk Productive Go
 
-Title:  Productive Go - Three reasons why Go is fun to work with (even after seven years).
+> Three reasons why Go is fun to work with (even after seven years).
 
 Abstract: The Go programming language is a stable and efficient programming
 language that can even be fun to work with. After using the language for a
