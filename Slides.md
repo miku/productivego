@@ -461,7 +461,8 @@ $ curl -s 172.18.113.99:8820/debug/vars | jq . | head -20
 The poor man's metrics tracking can be:
 
 ```shell
-$ while true; do curl -s 172.18.113.99:8820/debug/vars | jq .lastResponseTime; sleep 1; done
+$ while true; do curl -s 172.18.113.99:8820/debug/vars | \
+    jq .lastResponseTime; sleep 1; done
 0.000478914
 0.00035445
 0.000101177
