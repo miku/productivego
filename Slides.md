@@ -337,6 +337,8 @@ Other ecosystems are chasing the "small deployment artifact" target - (I
 * single binary
 * the go 1.15.2 amd64 *hello world* binary is 2.5MB (2034794)
 
+> **left** Go, default flags **right** C
+
 ![](x/hello/output.png)
 
 It includes the Go runtime. There might be optimization potential:
