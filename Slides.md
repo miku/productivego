@@ -36,8 +36,7 @@ replacement for a Java command line tool.
 
 In my spare time, I sometimes take part in hackathons ([join
 me](mailto:martin.czygan@gmail.com)); last time I
-[created](https://github.com/miku/dvmweb) slot machine animations with a
-[numpy](https://numpy.org/):
+[created](https://github.com/miku/dvmweb) slot machine animations with [numpy](https://numpy.org/):
 
 ![](static/dvm-011431.gif)
 
